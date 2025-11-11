@@ -9,9 +9,10 @@ function Book(id, title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function () {
-        return title + ", " + author + ", " + pages + " pages, " + read;
-    }
+}
+
+Book.prototype.info = function(){
+    return this.title + ", " + this.author + ", " + this.pages + " pages, " + this.read;
 }
 
 //const book1 = new Book('Alice in Wonderland ', 'Lewis Carroll', '250', 'not read yet');
