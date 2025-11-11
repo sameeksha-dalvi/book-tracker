@@ -1,3 +1,5 @@
+const myTracker = [];
+
 function Book(title, author, pages, read) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor");
@@ -11,6 +13,14 @@ function Book(title, author, pages, read) {
     }
 }
 
-const book1 = new Book('Alice in Wonderland ', 'Lewis Carroll', '250', 'not read yet');
+//const book1 = new Book('Alice in Wonderland ', 'Lewis Carroll', '250', 'not read yet');
 
-console.log(book1.info());
+//console.log(book1.info());
+
+function addBookToTracker(title,author,pages,read){
+    const book = new Book(title,author,pages,read);
+    myTracker.push(book);
+    console.log(myTracker);
+}
+
+//addBookToTracker('abc','sameeksha','100','not yet read');
