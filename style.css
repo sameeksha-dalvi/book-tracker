@@ -15,20 +15,12 @@ body {
     gap: 20px;
 }
 
-#card1 {
-    border: 1px solid red;
+.card {
     min-width: 300px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-#card2 {
-    border: 1px solid red;
-    min-width: 300px;
-}
-
-#card3 {
-    border: 1px solid red;
-    min-width: 300px;
-}
 
 .card-title {
     display: flex;
