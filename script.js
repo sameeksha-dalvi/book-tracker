@@ -20,9 +20,10 @@ Book.prototype.info = function(){
 //console.log(book1.info());
 
 function addBookToTracker(title,author,pages,read){
-    const book = new Book(title,author,pages,read);
+    const id = crypto.randomUUID();
+    const book = new Book(id,title,author,pages,read);
     myTracker.push(book);
     console.log(myTracker);
 }
 
-//addBookToTracker('abc','sameeksha','100','not yet read');
+addBookToTracker('abc','sameeksha','100','not yet read');
