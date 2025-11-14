@@ -30,6 +30,11 @@ body {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.book-cover-img{
+    max-width: 100px;
+    height: auto;
+}
+
 
 .card-title {
     display: flex;
