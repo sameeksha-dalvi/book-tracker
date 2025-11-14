@@ -26,7 +26,7 @@ function addBookToTracker(title, author, pages, read) {
     //console.log(myTracker);
 }
 
-addBookToTracker('Alice in Wonderland', 'Lewis Carroll', '250', 'not yet read');
+addBookToTracker('Alice in Wonderland', 'Lewis Carroll', '250 Pages', 'not yet read');
 addBookToTracker('The Alchemist', 'Paulo Coelho', '210', 'not yet read');
 addBookToTracker('Dune', 'Frank Herbert', '412', 'not yet read');
 
