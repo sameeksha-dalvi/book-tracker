@@ -20,7 +20,8 @@ body {
 
 .cardcontainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 20px;
 }
 
@@ -30,6 +31,7 @@ body {
     align-items: center;
     justify-content: space-evenly;
     padding: 10px;
+    margin: 10px;
     min-width: 350px;
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
