@@ -81,6 +81,8 @@ body {
 .book-cover-img {
     max-width: 125px;
     height: auto;
+    border: solid 1px var(--text) ;
+    border-radius: 6px;
 }
 
 .card-content {
