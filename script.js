@@ -27,57 +27,90 @@ function addBookToTracker(title, author, pages, read) {
 }
 
 addBookToTracker('Alice in Wonderland', 'Lewis Carroll', '250 Pages', 'not yet read');
-addBookToTracker('The Alchemist', 'Paulo Coelho', '210', 'not yet read');
-addBookToTracker('Dune', 'Frank Herbert', '412', 'not yet read');
+addBookToTracker('The Alchemist', 'Paulo Coelho', '210 Pages', 'not yet read');
+addBookToTracker('Dune', 'Frank Herbert', '412 Pages', 'not yet read');
+addBookToTracker('Dune', 'Frank Herbert', '412 Pages', 'not yet read');
+addBookToTracker('Dune', 'Frank Herbert', '412 Pages', 'not yet read');
 
 
 function showBookData() {
 
     const arrLength = myTracker.length;
-    const bookTitle = document.querySelector('#title1');
-    const bookAuthor = document.querySelector('#author1');
-    const bookPages = document.querySelector('#no_of_pages_1');
-    const readStatus = document.querySelector('#read_status_1');
-    bookTitle.textContent = myTracker[0].title;
-    bookAuthor.textContent = myTracker[0].author;
-    bookPages.textContent = myTracker[0].pages;
-    readStatus.textContent = myTracker[0].read;
 
-//create element
+    for (let i = 0; i < arrLength; i++) {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'card';
 
-    const cardDiv = document.createElement('div');
-    cardDiv.className = 'card';
-    cardDiv.textContent = 'Main Card Container';
+        const cardImage = document.createElement('div');
+        cardImage.className = 'card-image';
 
-    const cardTitle = document.createElement('div');
-    cardTitle.className = 'card-title';
-    cardTitle.textContent = 'Card Title';
+        const cardContent = document.createElement('div');
+        cardContent.className = 'card-content';
 
-    const cardAuthor = document.createElement('div');
-    cardAuthor.className = 'card-author';
-    cardAuthor.textContent = 'Card Author';
+        const cardLeftDiv = document.createElement('div');
+        cardLeftDiv.className = 'card-left';
 
-    const cardPages = document.createElement('div');
-    cardPages.className = 'card-pages';
-    cardPages.textContent = 'Card Pages';
+        const cardRightDiv = document.createElement('div');
+        cardRightDiv.className = 'card-right';
 
-    const cardRead = document.createElement('div');
-    cardRead.className = 'card-read';
-    cardRead.textContent = 'Card Read';
+        const cardTitle = document.createElement('div');
+        cardTitle.className = 'card-title';
 
-    cardDiv.appendChild(cardTitle);
-    cardDiv.appendChild(cardAuthor);
-    cardDiv.appendChild(cardPages);
-    cardDiv.appendChild(cardRead);
+        const cardAuthor = document.createElement('div');
+        cardAuthor.className = 'card-author';
+
+        const cardPages = document.createElement('div');
+        cardPages.className = 'card-pages';
+
+        const cardRead = document.createElement('div');
+        cardRead.className = 'card-read';
+
+        const bookCoverImg = document.createElement('img');
+        bookCoverImg.className = 'book-cover-img';
+        bookCoverImg.setAttribute('src', 'images/book_cover.png');
+        bookCoverImg.setAttribute('alt', 'Book Cover');
+
+        const bookTitle = document.createElement('p');
+        bookTitle.id = 'title' + i;
+        bookTitle.textContent = myTracker[i].title;
+
+        cardTitle.appendChild(bookTitle);
+
+        const bookAuthor = document.createElement('p');
+        bookAuthor.id = 'author' + i;
+        bookAuthor.textContent = myTracker[i].author;
+
+        cardAuthor.appendChild(bookAuthor);
 
 
-    document.querySelector('.cardcontainer').appendChild(cardDiv);
+        const bookPages = document.createElement('p');
+        bookPages.id = 'no_of_pages_' + i;
+        bookPages.textContent = myTracker[i].pages;
 
+        cardPages.appendChild(bookPages);
 
-    //console.log(bookTitle.textContent);
-    // for (let i = 0; i < arrLength; i++) {
-    //     console.log("book" + i + " " + myTracker[i].title);
-    // }
+        const readStatus = document.createElement('p');
+        readStatus.id = 'read_status_' + i;
+        readStatus.textContent = myTracker[i].read;
+
+        cardRead.appendChild(readStatus);
+
+        cardImage.appendChild(bookCoverImg);
+        cardLeftDiv.appendChild(cardTitle);
+        cardLeftDiv.appendChild(cardAuthor);
+
+        cardRightDiv.appendChild(cardPages);
+        cardRightDiv.appendChild(cardRead);
+
+        cardContent.appendChild(cardLeftDiv);
+        cardContent.appendChild(cardRightDiv);
+
+        cardDiv.appendChild(cardImage);
+        cardDiv.appendChild(cardContent);
+
+        document.querySelector('.cardcontainer').appendChild(cardDiv);
+
+    }
 }
 
 showBookData();
