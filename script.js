@@ -26,11 +26,11 @@ function addBookToTracker(title, author, pages, read) {
     //console.log(myTracker);
 }
 
-addBookToTracker('Alice in Wonderland', 'Lewis Carroll', '250 Pages', 'not yet read');
-addBookToTracker('The Alchemist', 'Paulo Coelho', '210 Pages', 'not yet read');
-addBookToTracker('Dune', 'Frank Herbert', '412 Pages', 'not yet read');
-addBookToTracker('Dune', 'Frank Herbert', '412 Pages', 'not yet read');
-addBookToTracker('Dune', 'Frank Herbert', '412 Pages', 'not yet read');
+addBookToTracker('Alice in Wonderland', 'Lewis Carroll', '250 pages', 'not yet read');
+addBookToTracker('The Alchemist', 'Paulo Coelho', '210 pages', 'not yet read');
+addBookToTracker('Dune', 'Frank Herbert', '412 pages', 'not yet read');
+addBookToTracker('Atomic Habits', 'James Clear', '320 pages', 'read');
+addBookToTracker('To Kill a Mockingbird', 'Harper Lee', '281 pages', 'not yet read');
 
 
 function showBookData() {
