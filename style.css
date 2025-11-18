@@ -121,3 +121,10 @@ body {
 .card-right {
     margin-right: 10px;
 }
+
+dialog{
+    width: 450px;
+    background-color: var(--bg);
+    border: solid 1px var(--accent-hover);
+    border-radius: 8px;
+}
