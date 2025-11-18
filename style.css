@@ -29,7 +29,7 @@ body {
     align-items: center;
 }
 
-.header>h1 {
+.header > h1 {
     color: var(--text);
     letter-spacing: 2px;
     margin-left: 15px;
@@ -76,6 +76,7 @@ body {
     min-width: 350px;
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: var(--text);
 }
 
 
