@@ -123,3 +123,10 @@ addBookBtn.addEventListener('click',function(){
 addBookDialog.showModal();
 });
 
+
+const closeBtn = document.querySelector('#close-dialog');
+
+closeBtn.addEventListener('click',function(){
+addBookDialog.close();
+});
+
