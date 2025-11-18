@@ -114,3 +114,12 @@ function showBookData() {
 }
 
 showBookData();
+
+
+const addBookBtn = document.querySelector('#add-book-btn');
+const addBookDialog = document.querySelector('dialog');
+
+addBookBtn.addEventListener('click',function(){
+addBookDialog.showModal();
+});
+

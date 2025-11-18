@@ -17,6 +17,34 @@
         </div>
         <div class="cardcontainer">
         </div>
+        <dialog>
+            <div class="dialogHeader">
+                <p>Book Details</p>
+                <button id="close-dialog">Close</button>
+            </div>
+
+            <form action="">
+                <div class="titleInput">
+                    <label for="">Title</label>
+                    <input type="text">
+                </div>
+                <div class="authorInput">
+                    <label for="">Author</label>
+                    <input type="text">
+                </div>
+                <div class="pagesInput">
+                    <label for="">No.of Pages</label>
+                    <input type="number">
+                </div>
+                <div class="readInput">
+                    <label for="">Have you read the book?</label>
+                    <input type="radio" id="read_status_yes" name="read_status" value="Yes">
+                    <label for="read_status_yes">Yes</label>
+                    <input type="radio" id="read_status_no" name="read_status" value="No">
+                    <label for="read_status_no">No</label>
+                </div>
+            </form>
+        </dialog>
     </div>
     <script src="script.js"></script>
 </body>
