@@ -20,24 +20,28 @@
         <dialog>
             <div class="dialogHeader">
                 <p>Book Details</p>
-                <button id="close-dialog">Close</button>
+                <button id="close-dialog"><svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <!-- <title>close-thick</title> -->
+                        <path
+                            d="M20 6.91L17.09 4L12 9.09L6.91 4L4 6.91L9.09 12L4 17.09L6.91 20L12 14.91L17.09 20L20 17.09L14.91 12L20 6.91Z" />
+                    </svg></button>
             </div>
 
             <form action="">
-                <div class="titleInput">
+                <div class="titleInput dialogInput">
                     <label for="">Title</label>
                     <input type="text">
                 </div>
-                <div class="authorInput">
+                <div class="authorInput dialogInput">
                     <label for="">Author</label>
                     <input type="text">
                 </div>
-                <div class="pagesInput">
+                <div class="pagesInput dialogInput">
                     <label for="">No.of Pages</label>
                     <input type="number">
                 </div>
                 <div class="readInput">
-                    <label for="">Have you read the book?</label>
+                    <label for="">Have you read the book?</label><br>
                     <input type="radio" id="read_status_yes" name="read_status" value="Yes">
                     <label for="read_status_yes">Yes</label>
                     <input type="radio" id="read_status_no" name="read_status" value="No">

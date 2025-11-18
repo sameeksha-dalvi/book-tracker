@@ -123,8 +123,60 @@ body {
 }
 
 dialog{
-    width: 450px;
+    width: 350px;
     background-color: var(--bg);
     border: solid 1px var(--accent-hover);
     border-radius: 8px;
+    color: var(--text);
 }
+
+.dialogHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+#close-dialog{
+   background-color: var(--bg);
+    border: none;
+}
+
+.close-icon{
+    width: 24px;
+    height: auto;
+    color: var(--accent);
+ }
+
+ .close-icon:hover{
+    color: var(--accent-hover);
+ }
+
+ .dialogHeader > p{
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+ }
+
+ .dialogInput{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+ }
+
+ .dialogInput > label,.readInput{
+    font-size: 20px;
+    font-weight: 500;
+ }
+
+ .dialogInput > input{
+    width: 70%;
+    border-radius: 6px;
+    border: solid 2px var(--accent);
+    font-size: 18px;
+    padding: 5px;
+ }
+
+ .dialogInput > input:focus{
+    border-color: var(--accent-hover);
+    outline: none;
+ }
