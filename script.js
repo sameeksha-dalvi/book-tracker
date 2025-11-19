@@ -1,4 +1,5 @@
 const myTracker = [];
+let singleBookData =[];
 
 function Book(id, title, author, pages, read) {
     if (!new.target) {
@@ -26,6 +27,14 @@ function addBookToTracker(title, author, pages, read) {
     //console.log(myTracker);
 }
 
+function addOneBookToTracker(title, author, pages, read) {
+    singleBookData = [];
+    const id = crypto.randomUUID();
+    const book = new Book(id, title, author, pages, read);
+    singleBookData.push(book);
+    //console.log(myTracker);
+}
+
 addBookToTracker('Alice in Wonderland', 'Lewis Carroll', '250 pages', 'not yet read');
 addBookToTracker('The Alchemist', 'Paulo Coelho', '210 pages', 'not yet read');
 addBookToTracker('Dune', 'Frank Herbert', '412 pages', 'not yet read');
@@ -33,9 +42,9 @@ addBookToTracker('Atomic Habits', 'James Clear', '320 pages', 'read');
 addBookToTracker('To Kill a Mockingbird', 'Harper Lee', '281 pages', 'not yet read');
 
 
-function showBookData() {
+function showBookData(bookArray) {
 
-    const arrLength = myTracker.length;
+    const arrLength = bookArray.length;
 
     for (let i = 0; i < arrLength; i++) {
         const cardDiv = document.createElement('div');
@@ -72,26 +81,26 @@ function showBookData() {
 
         const bookTitle = document.createElement('p');
         bookTitle.id = 'title' + i;
-        bookTitle.textContent = myTracker[i].title;
+        bookTitle.textContent = bookArray[i].title;
 
         cardTitle.appendChild(bookTitle);
 
         const bookAuthor = document.createElement('p');
         bookAuthor.id = 'author' + i;
-        bookAuthor.textContent = myTracker[i].author;
+        bookAuthor.textContent = bookArray[i].author;
 
         cardAuthor.appendChild(bookAuthor);
 
 
         const bookPages = document.createElement('p');
         bookPages.id = 'no_of_pages_' + i;
-        bookPages.textContent = myTracker[i].pages;
+        bookPages.textContent = bookArray[i].pages;
 
         cardPages.appendChild(bookPages);
 
         const readStatus = document.createElement('p');
         readStatus.id = 'read_status_' + i;
-        readStatus.textContent = myTracker[i].read;
+        readStatus.textContent = bookArray[i].read;
 
         cardRead.appendChild(readStatus);
 
@@ -113,20 +122,47 @@ function showBookData() {
     }
 }
 
-showBookData();
+showBookData(myTracker);
 
 
 const addBookBtn = document.querySelector('#add-book-btn');
 const addBookDialog = document.querySelector('dialog');
 
-addBookBtn.addEventListener('click',function(){
-addBookDialog.showModal();
+addBookBtn.addEventListener('click', function () {
+    addBookDialog.showModal();
 });
 
 
 const closeBtn = document.querySelector('#close-dialog');
 
-closeBtn.addEventListener('click',function(){
-addBookDialog.close();
+closeBtn.addEventListener('click', function () {
+    addBookDialog.close();
+
+
 });
 
+
+const submitBtn = document.querySelector('#submitBtn');
+
+submitBtn.addEventListener('click', function (e) {
+
+    const title = document.querySelector('#bookTitle');
+    const author = document.querySelector('#bookAuthor');
+    const pages = document.querySelector('#bookPages');
+
+
+    e.preventDefault();
+    addBookDialog.close(title.value+","+author.value+","+pages.value+",not yet read");
+    console.log("title" + title.value);
+});
+
+
+addBookDialog.addEventListener('close',function(){
+
+    const bookData = addBookDialog.returnValue.split(',');
+
+    addOneBookToTracker(bookData[0],bookData[1],bookData[2],bookData[3]);
+
+    showBookData(singleBookData);
+
+});

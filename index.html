@@ -29,22 +29,22 @@
 
             <form action="">
                 <div class="titleInput dialogInput">
-                    <label for="">Title</label>
-                    <input type="text">
+                    <label for="bookTitle">Title</label>
+                    <input required id="bookTitle" name="bookPages" type="text">
                 </div>
                 <div class="authorInput dialogInput">
-                    <label for="">Author</label>
-                    <input type="text">
+                    <label for="bookAuthor">Author</label>
+                    <input required id="bookAuthor" name="bookAuthor" type="text">
                 </div>
                 <div class="pagesInput dialogInput">
-                    <label for="">No.of Pages</label>
-                    <input type="number">
+                    <label for="bookPages">No.of Pages</label>
+                    <input required id="bookPages" name="bookPages" type="number">
                 </div>
                 <div class="readInput">
                     <label for="">Have you read the book?</label><br>
                     <input type="radio" id="read_status_yes" name="read_status" value="Yes">
                     <label for="read_status_yes">Yes</label>
-                    <input type="radio" id="read_status_no" name="read_status" value="No">
+                    <input type="radio" id="read_status_no" name="read_status" value="No" checked>
                     <label for="read_status_no">No</label>
                 </div>
                 <div>
