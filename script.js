@@ -159,6 +159,9 @@ submitBtn.addEventListener('click', function (e) {
 
 addBookDialog.addEventListener('close',function(){
 
+    if(addBookDialog.returnValue == ""){
+        return;
+    }
     const bookData = addBookDialog.returnValue.split(',');
 
     addOneBookToTracker(bookData[0],bookData[1],bookData[2],bookData[3]);
