@@ -124,11 +124,20 @@ function showBookData(bookArray) {
 
 showBookData(myTracker);
 
+function resetFormData(){
+    document.querySelector('#bookTitle').value = "";
+    document.querySelector('#bookAuthor').value = "";
+    document.querySelector('#bookPages').value = "";
+
+}
+
 
 const addBookBtn = document.querySelector('#add-book-btn');
 const addBookDialog = document.querySelector('dialog');
 
 addBookBtn.addEventListener('click', function () {
+    resetFormData();
+    addBookDialog.returnValue = '';
     addBookDialog.showModal();
 });
 
@@ -169,3 +178,5 @@ addBookDialog.addEventListener('close',function(){
     showBookData(singleBookData);
 
 });
+
+
