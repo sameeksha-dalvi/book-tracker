@@ -36,12 +36,13 @@ addBookToTracker('To Kill a Mockingbird', 'Harper Lee', '281 pages', 'not yet re
 function renderBooks() {
     const cardContainer = document.querySelector('.cardcontainer');
     cardContainer.innerHTML = "";
-   
+
     myTracker.forEach(book => {
-         cardContainer.appendChild(createBookCard(book));
-        
+        cardContainer.appendChild(createBookCard(book));
+
     });
 }
+
 
 
 
@@ -173,7 +174,7 @@ submitBtn.addEventListener('click', function (e) {
     const author = document.querySelector('#bookAuthor');
     const pages = document.querySelector('#bookPages');
 
-    if(title.value == ""|| title.value == undefined || author.value == ""|| author.value == undefined || pages.value == ""|| pages.value == undefined ){
+    if (title.value == "" || title.value == undefined || author.value == "" || author.value == undefined || pages.value == "" || pages.value == undefined) {
         alert("Please enter all the data to proceed");
         return;
     }
@@ -195,4 +196,22 @@ addBookDialog.addEventListener('close', function () {
 
 });
 
+function removeBookFromTracker(bookId) {
+    const bookIndex = myTracker.findIndex(myTracker => myTracker.id === bookId);
+    if (bookIndex !== -1) {
+        myTracker.splice(bookIndex, 1);
+    }
+    renderBooks();
+}
+
+const cardContainerClick = document.querySelector(".cardcontainer");
+
+cardContainerClick.addEventListener('click', function (event) {
+    if (event.target.tagName === "svg" || event.target.tagName === "path") {
+        const card = event.target.closest('.card');
+        const bookId = card.dataset.id;
+        removeBookFromTracker(bookId);
+    }
+
+});
 
