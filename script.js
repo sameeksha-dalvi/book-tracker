@@ -1,5 +1,5 @@
 const myTracker = [];
-let singleBookData = [];
+
 
 function Book(id, title, author, pages, read) {
     if (!new.target) {
@@ -16,24 +16,15 @@ Book.prototype.info = function () {
     return this.title + ", " + this.author + ", " + this.pages + " pages, " + this.read;
 }
 
-//const book1 = new Book('Alice in Wonderland ', 'Lewis Carroll', '250', 'not read yet');
 
-//console.log(book1.info());
 
 function addBookToTracker(title, author, pages, read) {
     const id = crypto.randomUUID();
     const book = new Book(id, title, author, pages, read);
     myTracker.push(book);
-    //console.log(myTracker);
+    renderBooks();
 }
 
-function addOneBookToTracker(title, author, pages, read) {
-    singleBookData = [];
-    const id = crypto.randomUUID();
-    const book = new Book(id, title, author, pages, read);
-    singleBookData.push(book);
-    //console.log(myTracker);
-}
 
 addBookToTracker('Alice in Wonderland', 'Lewis Carroll', '250 pages', 'not yet read');
 addBookToTracker('The Alchemist', 'Paulo Coelho', '210 pages', 'not yet read');
@@ -42,105 +33,110 @@ addBookToTracker('Atomic Habits', 'James Clear', '320 pages', 'read');
 addBookToTracker('To Kill a Mockingbird', 'Harper Lee', '281 pages', 'not yet read');
 
 
-function showBookData(bookArray) {
-
-    const arrLength = bookArray.length;
-
-    for (let i = 0; i < arrLength; i++) {
-        const cardDiv = document.createElement('div');
-        cardDiv.className = 'card';
-        cardDiv.setAttribute('data-id',bookArray[i].id);
+function renderBooks() {
+    const cardContainer = document.querySelector('.cardcontainer');
+    cardContainer.innerHTML = "";
+   
+    myTracker.forEach(book => {
+         cardContainer.appendChild(createBookCard(book));
         
-        const cardDeleteDiv = document.createElement('div');
-        cardDeleteDiv.className = 'card-delete';
-
-        const svgNameSpace = "http://www.w3.org/2000/svg";
-
-        const svgDeleteIcon = document.createElementNS(svgNameSpace, "svg");
-        svgDeleteIcon.setAttribute('viewBox', '0 0 24 24');
-        svgDeleteIcon.setAttribute('fill', 'currentColor');
-
-        const path = document.createElementNS(svgNameSpace, "path");
-        path.setAttribute("d", "M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z");
-
-        svgDeleteIcon.appendChild(path);
-        cardDeleteDiv.appendChild(svgDeleteIcon);
-
-
-        const cardImage = document.createElement('div');
-        cardImage.className = 'card-image';
-
-        const cardContent = document.createElement('div');
-        cardContent.className = 'card-content';
-
-        const cardLeftDiv = document.createElement('div');
-        cardLeftDiv.className = 'card-left';
-
-        const cardRightDiv = document.createElement('div');
-        cardRightDiv.className = 'card-right';
-
-        const cardTitle = document.createElement('div');
-        cardTitle.className = 'card-title';
-
-        const cardAuthor = document.createElement('div');
-        cardAuthor.className = 'card-author';
-
-        const cardPages = document.createElement('div');
-        cardPages.className = 'card-pages';
-
-        const cardRead = document.createElement('div');
-        cardRead.className = 'card-read';
-
-        const bookCoverImg = document.createElement('img');
-        bookCoverImg.className = 'book-cover-img';
-        bookCoverImg.setAttribute('src', 'images/book_cover.png');
-        bookCoverImg.setAttribute('alt', 'Book Cover');
-
-        const bookTitle = document.createElement('p');
-        bookTitle.id = 'title' + i;
-        bookTitle.textContent = bookArray[i].title;
-
-        cardTitle.appendChild(bookTitle);
-
-        const bookAuthor = document.createElement('p');
-        bookAuthor.id = 'author' + i;
-        bookAuthor.textContent = bookArray[i].author;
-
-        cardAuthor.appendChild(bookAuthor);
-
-
-        const bookPages = document.createElement('p');
-        bookPages.id = 'no_of_pages_' + i;
-        bookPages.textContent = bookArray[i].pages;
-
-        cardPages.appendChild(bookPages);
-
-        const readStatus = document.createElement('p');
-        readStatus.id = 'read_status_' + i;
-        readStatus.textContent = bookArray[i].read;
-
-        cardRead.appendChild(readStatus);
-
-        cardImage.appendChild(bookCoverImg);
-        cardLeftDiv.appendChild(cardTitle);
-        cardLeftDiv.appendChild(cardAuthor);
-
-        cardRightDiv.appendChild(cardPages);
-        cardRightDiv.appendChild(cardRead);
-
-        cardContent.appendChild(cardLeftDiv);
-        cardContent.appendChild(cardRightDiv);
-
-        cardDiv.appendChild(cardDeleteDiv);
-        cardDiv.appendChild(cardImage);
-        cardDiv.appendChild(cardContent);
-
-        document.querySelector('.cardcontainer').appendChild(cardDiv);
-
-    }
+    });
 }
 
-showBookData(myTracker);
+
+
+function createBookCard(book) {
+
+    const cardDiv = document.createElement('div');
+    cardDiv.className = 'card';
+    cardDiv.setAttribute('data-id', book.id);
+
+    const cardDeleteDiv = document.createElement('div');
+    cardDeleteDiv.className = 'card-delete';
+
+    const svgNameSpace = "http://www.w3.org/2000/svg";
+
+    const svgDeleteIcon = document.createElementNS(svgNameSpace, "svg");
+    svgDeleteIcon.setAttribute('viewBox', '0 0 24 24');
+    svgDeleteIcon.setAttribute('fill', 'currentColor');
+
+    const path = document.createElementNS(svgNameSpace, "path");
+    path.setAttribute("d", "M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z");
+
+    svgDeleteIcon.appendChild(path);
+    cardDeleteDiv.appendChild(svgDeleteIcon);
+
+
+    const cardImage = document.createElement('div');
+    cardImage.className = 'card-image';
+
+    const cardContent = document.createElement('div');
+    cardContent.className = 'card-content';
+
+    const cardLeftDiv = document.createElement('div');
+    cardLeftDiv.className = 'card-left';
+
+    const cardRightDiv = document.createElement('div');
+    cardRightDiv.className = 'card-right';
+
+    const cardTitle = document.createElement('div');
+    cardTitle.className = 'card-title';
+
+    const cardAuthor = document.createElement('div');
+    cardAuthor.className = 'card-author';
+
+    const cardPages = document.createElement('div');
+    cardPages.className = 'card-pages';
+
+    const cardRead = document.createElement('div');
+    cardRead.className = 'card-read';
+
+    const bookCoverImg = document.createElement('img');
+    bookCoverImg.className = 'book-cover-img';
+    bookCoverImg.setAttribute('src', 'images/book_cover.png');
+    bookCoverImg.setAttribute('alt', 'Book Cover');
+
+    const bookTitle = document.createElement('p');
+    bookTitle.textContent = book.title;
+
+    cardTitle.appendChild(bookTitle);
+
+    const bookAuthor = document.createElement('p');
+    bookAuthor.textContent = book.author;
+
+    cardAuthor.appendChild(bookAuthor);
+
+
+    const bookPages = document.createElement('p');
+    bookPages.textContent = book.pages;
+
+    cardPages.appendChild(bookPages);
+
+    const readStatus = document.createElement('p');
+    readStatus.textContent = book.read;
+
+    cardRead.appendChild(readStatus);
+
+    cardImage.appendChild(bookCoverImg);
+    cardLeftDiv.appendChild(cardTitle);
+    cardLeftDiv.appendChild(cardAuthor);
+
+    cardRightDiv.appendChild(cardPages);
+    cardRightDiv.appendChild(cardRead);
+
+    cardContent.appendChild(cardLeftDiv);
+    cardContent.appendChild(cardRightDiv);
+
+    cardDiv.appendChild(cardDeleteDiv);
+    cardDiv.appendChild(cardImage);
+    cardDiv.appendChild(cardContent);
+
+    return cardDiv;
+
+
+}
+
+
 
 function resetFormData() {
     document.querySelector('#bookTitle').value = "";
@@ -191,9 +187,8 @@ addBookDialog.addEventListener('close', function () {
     }
     const bookData = addBookDialog.returnValue.split(',');
 
-    addOneBookToTracker(bookData[0], bookData[1], bookData[2], bookData[3]);
+    addBookToTracker(bookData[0], bookData[1], bookData[2], bookData[3]);
 
-    showBookData(singleBookData);
 
 });
 
