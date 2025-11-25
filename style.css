@@ -23,8 +23,8 @@ body {
 }
 
 svg {
-    max-width: 30px;
-    max-height: auto;
+    width: 30px;
+    height: auto;
 }
 
 .header {
@@ -214,4 +214,17 @@ dialog::backdrop {
 
 #submitBtn:hover {
     background-color: var(--accent-hover);
+}
+
+.card-delete{
+    min-width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.card-delete > svg{
+    color: var(--accent);
+}
+
+.card-delete > svg:hover{
+    color: var(--accent-hover);
 }

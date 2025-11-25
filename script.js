@@ -1,5 +1,5 @@
 const myTracker = [];
-let singleBookData =[];
+let singleBookData = [];
 
 function Book(id, title, author, pages, read) {
     if (!new.target) {
@@ -49,6 +49,22 @@ function showBookData(bookArray) {
     for (let i = 0; i < arrLength; i++) {
         const cardDiv = document.createElement('div');
         cardDiv.className = 'card';
+
+        const cardDeleteDiv = document.createElement('div');
+        cardDeleteDiv.className = 'card-delete';
+
+        const svgNameSpace = "http://www.w3.org/2000/svg";
+
+        const svgDeleteIcon = document.createElementNS(svgNameSpace,"svg");
+        svgDeleteIcon.setAttribute('viewBox','0 0 24 24');
+        svgDeleteIcon.setAttribute('fill','currentColor');
+
+        const path = document.createElementNS(svgNameSpace,"path");
+        path.setAttribute("d","M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z");
+
+        svgDeleteIcon.appendChild(path);
+        cardDeleteDiv.appendChild(svgDeleteIcon);
+
 
         const cardImage = document.createElement('div');
         cardImage.className = 'card-image';
@@ -114,6 +130,7 @@ function showBookData(bookArray) {
         cardContent.appendChild(cardLeftDiv);
         cardContent.appendChild(cardRightDiv);
 
+        cardDiv.appendChild(cardDeleteDiv);
         cardDiv.appendChild(cardImage);
         cardDiv.appendChild(cardContent);
 
@@ -124,7 +141,7 @@ function showBookData(bookArray) {
 
 showBookData(myTracker);
 
-function resetFormData(){
+function resetFormData() {
     document.querySelector('#bookTitle').value = "";
     document.querySelector('#bookAuthor').value = "";
     document.querySelector('#bookPages').value = "";
@@ -161,19 +178,19 @@ submitBtn.addEventListener('click', function (e) {
 
 
     e.preventDefault();
-    addBookDialog.close(title.value+","+author.value+","+pages.value+",not yet read");
+    addBookDialog.close(title.value + "," + author.value + "," + pages.value + ",not yet read");
     console.log("title" + title.value);
 });
 
 
-addBookDialog.addEventListener('close',function(){
+addBookDialog.addEventListener('close', function () {
 
-    if(addBookDialog.returnValue == ""){
+    if (addBookDialog.returnValue == "") {
         return;
     }
     const bookData = addBookDialog.returnValue.split(',');
 
-    addOneBookToTracker(bookData[0],bookData[1],bookData[2],bookData[3]);
+    addOneBookToTracker(bookData[0], bookData[1], bookData[2], bookData[3]);
 
     showBookData(singleBookData);
 
