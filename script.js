@@ -173,10 +173,13 @@ submitBtn.addEventListener('click', function (e) {
     const author = document.querySelector('#bookAuthor');
     const pages = document.querySelector('#bookPages');
 
+    if(title.value == ""|| title.value == undefined || author.value == ""|| author.value == undefined || pages.value == ""|| pages.value == undefined ){
+        alert("Please enter all the data to proceed");
+        return;
+    }
 
     e.preventDefault();
     addBookDialog.close(title.value + "," + author.value + "," + pages.value + ",not yet read");
-    console.log("title" + title.value);
 });
 
 
