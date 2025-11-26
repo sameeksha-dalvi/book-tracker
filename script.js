@@ -232,6 +232,10 @@ function removeBookFromTracker(bookId) {
     renderBooks();
 }
 
+function findBookById(bookId){
+    return  myTracker.find((book) => book.id === bookId);
+}
+
 const cardContainerClick = document.querySelector(".cardcontainer");
 
 cardContainerClick.addEventListener('click', function (event) {
@@ -239,6 +243,14 @@ cardContainerClick.addEventListener('click', function (event) {
         const card = event.target.closest('.card');
         const bookId = card.dataset.id;
         removeBookFromTracker(bookId);
+    }
+
+    if(event.target.closest('.toggle-read-btn')){
+        const card = event.target.closest('.card');
+        const bookId = card.dataset.id;
+        const bookObj = findBookById(bookId);
+        bookObj.toggleReadStatus();
+        renderBooks();
     }
 
 });
