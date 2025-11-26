@@ -171,6 +171,7 @@ function resetFormData() {
     document.querySelector('#bookTitle').value = "";
     document.querySelector('#bookAuthor').value = "";
     document.querySelector('#bookPages').value = "";
+    document.querySelector('#read_status_no').checked = true;
 
 }
 
@@ -198,17 +199,19 @@ const submitBtn = document.querySelector('#submitBtn');
 
 submitBtn.addEventListener('click', function (e) {
 
-    const title = document.querySelector('#bookTitle');
-    const author = document.querySelector('#bookAuthor');
-    const pages = document.querySelector('#bookPages');
+    const title = document.querySelector('#bookTitle').value;
+    const author = document.querySelector('#bookAuthor').value;
+    const pages = document.querySelector('#bookPages').value + " pages";
+    const read = document.querySelector('input[name="read_status"]:checked').value;
 
-    if (title.value == "" || title.value == undefined || author.value == "" || author.value == undefined || pages.value == "" || pages.value == undefined) {
+
+    if (title == "" || author == "" || pages == "") {
         alert("Please enter all the data to proceed");
         return;
     }
 
     e.preventDefault();
-    addBookDialog.close(title.value + "," + author.value + "," + pages.value + ",not yet read");
+    addBookDialog.close(title + "," + author + "," + pages + ","+read);
 });
 
 
@@ -219,7 +222,15 @@ addBookDialog.addEventListener('close', function () {
     }
     const bookData = addBookDialog.returnValue.split(',');
 
-    addBookToTracker(bookData[0], bookData[1], bookData[2], bookData[3]);
+    let read;
+    if(bookData[3] == "true"){
+        read = true;
+    }else{
+        read = false;
+    }
+
+
+    addBookToTracker(bookData[0], bookData[1], bookData[2], read);
 
 
 });
