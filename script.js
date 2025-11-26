@@ -92,6 +92,13 @@ function createBookCard(book) {
     const cardRead = document.createElement('div');
     cardRead.className = 'card-read';
 
+    const cardBottom = document.createElement('div');
+    cardBottom.className = 'card-bottom';
+
+    const toggleReadBtn = document.createElement('button');
+    toggleReadBtn.className = 'toggle-read-btn';
+    toggleReadBtn.textContent = 'Mark as Read';
+
     const bookCoverImg = document.createElement('img');
     bookCoverImg.className = 'book-cover-img';
     bookCoverImg.setAttribute('src', 'images/book_cover.png');
@@ -124,13 +131,17 @@ function createBookCard(book) {
 
     cardRightDiv.appendChild(cardPages);
     cardRightDiv.appendChild(cardRead);
+    
 
     cardContent.appendChild(cardLeftDiv);
     cardContent.appendChild(cardRightDiv);
 
+    cardBottom.appendChild(toggleReadBtn);
+
     cardDiv.appendChild(cardDeleteDiv);
     cardDiv.appendChild(cardImage);
     cardDiv.appendChild(cardContent);
+    cardDiv.appendChild(cardBottom);
 
     return cardDiv;
 
@@ -214,4 +225,3 @@ cardContainerClick.addEventListener('click', function (event) {
     }
 
 });
-
