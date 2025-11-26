@@ -97,10 +97,15 @@ svg {
 }
 
 .card-content {
+    width: 100%;
+    margin-top: 20px;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     gap: 50px;
 }
+
+
 
 .card-title {
     font-size: 20px;
@@ -109,7 +114,7 @@ svg {
 }
 
 .card-author {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 400;
 }
 
@@ -117,18 +122,40 @@ svg {
     font-size: 15px;
 }
 
+
 .card-read {
     font-size: 15px;
 }
 
+.card-title>p,
+.card-author>p,
+.card-pages>p,
+.card-read>p {
+    margin: 0;
+}
+
+.card-read>p {
+    margin-top: 5px;
+}
+
+.card-pages>p {
+    margin-top: px;
+}
+
 .card-left {
     margin-left: 10px;
-    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
 
 }
 
 .card-right {
     margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 dialog {
@@ -216,15 +243,36 @@ dialog::backdrop {
     background-color: var(--accent-hover);
 }
 
-.card-delete{
+.card-delete {
     min-width: 100%;
     display: flex;
     justify-content: flex-end;
 }
-.card-delete > svg{
+
+.card-delete>svg {
     color: var(--accent);
 }
 
-.card-delete > svg:hover{
+.card-delete>svg:hover {
     color: var(--accent-hover);
+}
+
+.card-bottom {
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.toggle-read-btn {
+    background-color: var(--accent);
+    color: var(--bg);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.toggle-read-btn:hover {
+    background-color: var(--accent-hover);
 }
