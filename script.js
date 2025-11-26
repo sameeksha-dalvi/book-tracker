@@ -17,6 +17,10 @@ Book.prototype.info = function () {
 }
 
 
+Book.prototype.toggleReadStatus = function () {
+    this.read = !this.read;
+}
+
 
 function addBookToTracker(title, author, pages, read) {
     const id = crypto.randomUUID();
@@ -26,11 +30,11 @@ function addBookToTracker(title, author, pages, read) {
 }
 
 
-addBookToTracker('Alice in Wonderland', 'Lewis Carroll', '250 pages', 'not yet read');
-addBookToTracker('The Alchemist', 'Paulo Coelho', '210 pages', 'not yet read');
-addBookToTracker('Dune', 'Frank Herbert', '412 pages', 'not yet read');
-addBookToTracker('Atomic Habits', 'James Clear', '320 pages', 'read');
-addBookToTracker('To Kill a Mockingbird', 'Harper Lee', '281 pages', 'not yet read');
+addBookToTracker('Alice in Wonderland', 'Lewis Carroll', '250 pages', false);
+addBookToTracker('The Alchemist', 'Paulo Coelho', '210 pages', false);
+addBookToTracker('Dune', 'Frank Herbert', '412 pages', false);
+addBookToTracker('Atomic Habits', 'James Clear', '320 pages', true);
+addBookToTracker('To Kill a Mockingbird', 'Harper Lee', '281 pages', false);
 
 
 function renderBooks() {
@@ -97,7 +101,14 @@ function createBookCard(book) {
 
     const toggleReadBtn = document.createElement('button');
     toggleReadBtn.className = 'toggle-read-btn';
-    toggleReadBtn.textContent = 'Mark as Read';
+
+    if (book.read == false) {
+        toggleReadBtn.textContent = 'Mark as Read';
+    } else {
+        toggleReadBtn.textContent = 'Mark as Unread';
+    }
+
+
 
     const bookCoverImg = document.createElement('img');
     bookCoverImg.className = 'book-cover-img';
@@ -121,7 +132,13 @@ function createBookCard(book) {
     cardPages.appendChild(bookPages);
 
     const readStatus = document.createElement('p');
-    readStatus.textContent = book.read;
+
+    if (book.read == true) {
+        readStatus.textContent = 'Read';
+    } else {
+        readStatus.textContent = 'Unread'
+    }
+
 
     cardRead.appendChild(readStatus);
 
@@ -131,7 +148,7 @@ function createBookCard(book) {
 
     cardRightDiv.appendChild(cardPages);
     cardRightDiv.appendChild(cardRead);
-    
+
 
     cardContent.appendChild(cardLeftDiv);
     cardContent.appendChild(cardRightDiv);
